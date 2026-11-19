@@ -1,0 +1,14 @@
+{
+  "name": "gt3-tablero",
+  "version": "1.0.0",
+  "description": "TP Base de Datos Aplicada - Tablero de control Concesionaria GT3",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mssql": "^11.0.1"
+  }
+}
