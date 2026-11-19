@@ -1,7 +1,7 @@
 # Tablero de Control – Concesionaria GT3
 
 Trabajo Práctico Final de **Base de Datos Aplicada** (UAI).
-Integrantes: **Federica** y **Franco Turri**.
+Integrantes: **Federica Ageno** y **Franco Turri**.
 
 Tablero web que muestra el stock y las ventas de una concesionaria de autos deportivos,
 con datos obtenidos de SQL Server mediante consultas SQL.
