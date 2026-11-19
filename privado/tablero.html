@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GT3 · Tablero de control</title>
+  <link rel="stylesheet" href="/normalize.css">
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+  <header class="barra-superior">
+    <h1>GT3 · Tablero de control</h1>
+    <div>
+      <span class="usuario" id="nombreUsuario"></span>
+      <button id="btnSalir">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="contenido">
+
+    <!-- ================= INDICADORES GENERALES ================= -->
+    <section class="kpis">
+      <article class="panel kpi">
+        <div class="kpi-titulo">Vehículos en stock</div>
+        <div class="kpi-numero" id="kpiStock">…</div>
+      </article>
+      <article class="panel kpi">
+        <div class="kpi-titulo">Unidades vendidas</div>
+        <div class="kpi-numero" id="kpiVendidos">…</div>
+      </article>
+      <article class="panel kpi">
+        <div class="kpi-titulo">Total facturado</div>
+        <div class="kpi-numero kpi-chico" id="kpiFacturado">…</div>
+      </article>
+      <article class="panel kpi">
+        <div class="kpi-titulo">Estado de sucursales</div>
+        <div class="kpi-semaforos" id="kpiSemaforos">…</div>
+      </article>
+    </section>
+
+    <div class="columnas">
+
+      <!-- ================= DRILL-DOWN ================= -->
+      <section class="panel drill">
+        <div class="drill-cabecera">
+          <nav class="migas" id="migas" aria-label="Nivel actual"></nav>
+          <button class="btn-volver" id="btnVolver" hidden>← Volver</button>
+        </div>
+        <h2 id="tituloNivel"></h2>
+        <p class="ayuda" id="ayudaNivel"></p>
+        <div id="tablaNivel" class="tabla-contenedor"></div>
+      </section>
+
+      <aside class="columna-lateral">
+        <!-- ================= LEYENDA DEL SEMÁFORO ================= -->
+        <section class="panel leyenda">
+          <h3>Referencia del semáforo de stock</h3>
+          <ul>
+            <li><span class="luz VERDE"></span><div><strong>Verde – Normal:</strong> el stock supera el mínimo de la sucursal en 2 unidades o más.</div></li>
+            <li><span class="luz AMARILLO"></span><div><strong>Amarillo – Advertencia:</strong> el stock está en el mínimo o 1 unidad por encima. Conviene planificar reposición.</div></li>
+            <li><span class="luz ROJO"></span><div><strong>Rojo – Crítico:</strong> el stock está por debajo del mínimo. Hay que reponer.</div></li>
+          </ul>
+          <p class="nota">En el nivel de provincias, cada provincia toma el color de su sucursal en peor estado.</p>
+        </section>
+
+        <!-- ================= VENTAS POR MODELO ================= -->
+        <section class="panel">
+          <h3 id="tituloVentas">Ventas por modelo</h3>
+          <div id="graficoVentas" class="grafico-barras"></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <script src="/js/tablero.js"></script>
+</body>
+</html>

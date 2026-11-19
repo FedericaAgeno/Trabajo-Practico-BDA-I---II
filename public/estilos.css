@@ -1,0 +1,222 @@
+/* =====================================================================
+   Estilos GT3 — rojo, dorado y gris (basado en el diseño original)
+   ===================================================================== */
+:root {
+  --rojo: #a90420;
+  --rojo-oscuro: #7a0217;
+  --dorado: #f2c230;
+  --gris: #cfcfcf;
+  --texto: #1d1d1f;
+  --blanco: #ffffff;
+  --verde-sem: #2e9e44;
+  --amarillo-sem: #f2b705;
+  --rojo-sem: #d62828;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--texto);
+  background: var(--rojo) url('/img/GT3LogoBackground.jpg') center / cover fixed no-repeat;
+}
+
+/* ---------------- Login ---------------- */
+.pantalla-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tarjeta-login {
+  width: 100%;
+  max-width: 380px;
+  padding: 36px 32px;
+  background: rgba(20, 20, 20, 0.88);
+  border: 2px solid var(--dorado);
+  border-radius: 12px;
+  color: var(--dorado);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.tarjeta-login h1 {
+  margin: 0;
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+.tarjeta-login h1 span {
+  display: block;
+  font-size: 16px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+.subtitulo { color: var(--gris); margin: 8px 0 24px; }
+
+.tarjeta-login form { display: flex; flex-direction: column; gap: 6px; }
+
+.tarjeta-login label { font-size: 14px; margin-top: 10px; }
+
+.tarjeta-login input {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid var(--gris);
+  border-radius: 6px;
+}
+
+.tarjeta-login button {
+  margin-top: 20px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--texto);
+  background: var(--dorado);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.tarjeta-login button:disabled { opacity: 0.6; cursor: wait; }
+
+.error { min-height: 20px; color: #ff8080; font-size: 14px; margin: 10px 0 0; }
+
+/* ---------------- Tablero ---------------- */
+.barra-superior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background: rgba(20, 20, 20, 0.92);
+  color: var(--dorado);
+  border-bottom: 2px solid var(--dorado);
+}
+.barra-superior h1 { margin: 0; font-size: 22px; }
+.barra-superior .usuario { color: var(--gris); margin-right: 14px; }
+.barra-superior button {
+  padding: 6px 14px;
+  background: transparent;
+  color: var(--dorado);
+  border: 1px solid var(--dorado);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contenido {
+  max-width: 1150px;
+  margin: 28px auto;
+  padding: 0 20px;
+}
+
+.panel {
+  background: var(--blanco);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.panel h2 { margin: 6px 0 4px; font-size: 22px; color: var(--rojo-oscuro); }
+.panel h3 { margin: 0 0 12px; font-size: 16px; color: var(--rojo-oscuro); }
+
+/* ---------- Indicadores ---------- */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 4px;
+}
+.kpi { margin-bottom: 16px; }
+.kpi-numero { font-size: 40px; font-weight: bold; color: var(--rojo); margin-top: 6px; }
+.kpi-chico { font-size: 28px; padding-top: 8px; }
+.kpi-titulo { color: #555; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
+.kpi-semaforos { display: flex; gap: 18px; margin-top: 14px; font-size: 26px; font-weight: bold; }
+.kpi-sem { display: inline-flex; align-items: center; gap: 6px; }
+
+/* ---------- Distribución en columnas ---------- */
+.columnas {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ---------- Drill-down ---------- */
+.drill-cabecera { display: flex; justify-content: space-between; align-items: center; }
+.migas { font-size: 14px; color: #666; }
+.migas a { color: var(--rojo); font-weight: bold; text-decoration: none; }
+.migas a:hover { text-decoration: underline; }
+.btn-volver {
+  padding: 6px 14px;
+  background: var(--rojo);
+  color: var(--blanco);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn-volver:hover { background: var(--rojo-oscuro); }
+.ayuda { color: #666; font-size: 14px; margin: 0 0 14px; }
+
+.tabla-contenedor { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th {
+  text-align: left;
+  background: #1d1d1f;
+  color: var(--dorado);
+  padding: 10px 12px;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+td { padding: 10px 12px; border-bottom: 1px solid #e6e6e6; }
+.num { text-align: right; }
+.mono { font-family: Consolas, monospace; font-size: 13px; }
+tr.clic { cursor: pointer; }
+tr.clic:hover td { background: #fff4d6; }
+tr.fila-ROJO td { background: #fdecec; }
+tr.fila-ROJO:hover td { background: #fbd9d9; }
+
+.cargando, .vacio { color: #777; font-style: italic; }
+.error-tabla { color: var(--rojo-sem); }
+
+/* ---------- Semáforo ---------- */
+.luz {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  vertical-align: middle;
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+.luz.VERDE    { background: var(--verde-sem); }
+.luz.AMARILLO { background: var(--amarillo-sem); }
+.luz.ROJO     { background: var(--rojo-sem); }
+.estado-texto { margin-left: 6px; font-size: 14px; }
+
+.leyenda ul { list-style: none; padding: 0; margin: 0; }
+.leyenda li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; font-size: 14px; }
+.leyenda li .luz { margin-top: 2px; }
+.nota { font-size: 12px; color: #777; margin: 8px 0 0; }
+
+/* ---------- Gráfico de barras ---------- */
+.grafico-barras { display: flex; flex-direction: column; gap: 10px; }
+.barra-fila {
+  display: grid;
+  grid-template-columns: 140px 1fr 28px;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.barra-etiqueta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.barra-pista { background: #eee; border-radius: 4px; height: 18px; }
+.barra { display: block; height: 100%; background: var(--rojo); border-radius: 4px; }
+.barra-valor { text-align: right; font-weight: bold; }
+
+/* ---------- Pantallas chicas ---------- */
+@media (max-width: 900px) {
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .columnas { grid-template-columns: 1fr; }
+}

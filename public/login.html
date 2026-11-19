@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GT3 · Iniciar sesión</title>
+  <link rel="stylesheet" href="/normalize.css">
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body class="pantalla-login">
+  <main class="tarjeta-login">
+    <h1>GT3 <span>Concesionaria</span></h1>
+    <p class="subtitulo">Tablero de control · Iniciar sesión</p>
+
+    <form id="formLogin" autocomplete="off">
+      <label for="inputLogin">Usuario</label>
+      <input type="text" id="inputLogin" placeholder="Usuario" required autofocus>
+
+      <label for="inputPassword">Contraseña</label>
+      <input type="password" id="inputPassword" placeholder="Contraseña" required>
+
+      <button type="submit" id="btnIngresar">Ingresar</button>
+      <p id="mensajeError" class="error" role="alert"></p>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('formLogin');
+    const error = document.getElementById('mensajeError');
+    const boton = document.getElementById('btnIngresar');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();               // que no recargue la página
+      error.textContent = '';
+      boton.disabled = true;
+      boton.textContent = 'Verificando...';
+
+      try {
+        const resp = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            usuario: document.getElementById('inputLogin').value.trim(),
+            password: document.getElementById('inputPassword').value
+          })
+        });
+        const datos = await resp.json();
+        if (resp.ok) {
+          window.location.href = '/tablero';   // login correcto → al tablero
+        } else {
+          error.textContent = datos.error || 'No se pudo iniciar sesión';
+        }
+      } catch {
+        error.textContent = 'No hay conexión con el servidor';
+      } finally {
+        boton.disabled = false;
+        boton.textContent = 'Ingresar';
+      }
+    });
+  </script>
+</body>
+</html>
